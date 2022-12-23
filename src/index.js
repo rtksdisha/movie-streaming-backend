@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const cors = require("cors")
 
 const movieRouter = require("./routes/movies");
 
@@ -9,6 +10,7 @@ const port = 4000;
 
 //executed before passing to router function
 app.use(express.json());
+app.use(cors())
 
 //get home page
 app.get("/", (req, res) => {

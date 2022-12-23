@@ -8,6 +8,12 @@ const MovieSchema = new mongoose.Schema({
   synopsis: {
     type: String,
   },
+  genre: {
+    type: String,
+  },
+  movieUrl: {
+    type: String,
+  },
   releaseDate: {
     type: String,
   },

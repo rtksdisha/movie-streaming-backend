@@ -6,6 +6,7 @@ const getMovies = async () => {
 };
 
 const saveMovie = async (movie) => {
+  movie.isFavorite = false
   const savedMovie = new Movie(movie);
   await savedMovie.save();
   return savedMovie;

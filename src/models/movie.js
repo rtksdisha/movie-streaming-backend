@@ -20,6 +20,9 @@ const MovieSchema = new mongoose.Schema({
   coverImage: {
     type: String,
   },
+  isFavorite: {
+    type: Boolean,
+  },
 });
 
 const MovieModel = mongoose.model("Movie", MovieSchema);

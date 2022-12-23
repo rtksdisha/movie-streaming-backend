@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const movieRouter = require("./routes/movies");
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const app = express();
+const port = 4000;
+
+//executed before passing to router function
+app.use(express.json());
+
+//get home page
+app.get("/", (req, res) => {
+  res.json({ message: "Hello Bootcamp!" });
+});
+
+app.use("/movies", movieRouter);
+
+const connectDb = () => {
+  mongoose.set("strictQuery", false);
+  mongoose.connect(process.env.DB_URI, () => {
+    console.log("Connected to MongoDB");
+  });
+};
+
+app.listen(port, () => {
+  console.log(`Server is running in port ${port}`);
+  connectDb();
+});

@@ -6,7 +6,7 @@ const cors = require("cors")
 const movieRouter = require("./routes/movies");
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 //executed before passing to router function
 app.use(express.json());

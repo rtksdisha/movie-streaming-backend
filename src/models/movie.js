@@ -15,7 +15,7 @@ const MovieSchema = new mongoose.Schema({
     type: String,
   },
   releaseDate: {
-    type: String,
+    type: Number,
   },
   coverImage: {
     type: String,

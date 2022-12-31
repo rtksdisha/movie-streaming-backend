@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const cors = require("cors")
+const cors = require("cors");
 
 const movieRouter = require("./routes/movies");
 
@@ -10,7 +10,7 @@ const port = process.env.PORT || 4000;
 
 //executed before passing to router function
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 //get home page
 app.get("/", (req, res) => {
@@ -26,7 +26,9 @@ const connectDb = () => {
   });
 };
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is running in port ${port}`);
   connectDb();
 });
+
+module.exports = { app, server };
